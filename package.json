@@ -1,0 +1,28 @@
+{
+  "name": "delivery-app",
+  "version": "1.0.0",
+  "description": "web app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shharw/delivery-app.git"
+  },
+  "author": "Artem Shevchuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shharw/delivery-app/issues"
+  },
+  "homepage": "https://github.com/shharw/delivery-app#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.4"
+  }
+}
