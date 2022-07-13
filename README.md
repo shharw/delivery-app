@@ -11,9 +11,9 @@ Test web application for ElifTech
   2. In browser open https://localhost:5000
 
 #Screenshots of the database and video of the app
-- [Google Drive link to video](https://drive.google.com/)
-- Orders database
-######![Order database](images/OrdersDB.png)
-- Shops database
-######![Shops database](images/ShopsDB.png)
-######![Shops2 database](images/ShopsDB2.png)
+* [Google Drive link to video](https://drive.google.com/)
+* Orders database
+  1. ![Order database](images/OrdersDB.png)
+* Shops database
+  1. ![Shops database](images/ShopsDB.png)
+  2. ![Shops2 database](images/ShopsDB2.png)
