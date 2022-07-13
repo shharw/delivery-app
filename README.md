@@ -10,7 +10,7 @@ Test web application for ElifTech
   1. In console: npm run dev
   2. In browser open https://localhost:5000
 
-#Screenshots of the database and video of the app
+# Screenshots of the database and video of the app
 * [Google Drive link to video](https://drive.google.com/)
 * Orders database
   1. ![Order database](images/OrdersDB.png)
