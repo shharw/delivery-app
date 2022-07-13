@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Cart</title>
+</head>
+<body class="bg-light">
+<%- include('./partials/nav.ejs') %>
+<div class="row mt-2 mx-5">
+    <div class="col-3 mt-2 fs-3">
+        <form action="/cart" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter your name.">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" aria-describedby="emailDesc" placeholder="Enter your email.">
+                <div id="emailDesc" class="form-text fs-5">Email isn`t required</div>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" name="phone" placeholder="Enter your phone number.">
+            </div>
+            <div class="mb-5">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" name="address" placeholder="Enter delivery address.">
+            </div>
+            <div class="mb-5 d-flex justify-content-between">
+                <span class="fs-2">
+                    Total sum: <span id="total-sum"></span>$
+                </span>
+                <input type="text" id="input-total-sum" name="products" hidden>
+                <input type="submit" class="btn btn-dark fs-3" id="submit-btn" value="Submit order">
+            </div>
+        </form>
+    </div>
+    <div class="col-9">
+        <script>
+            const products = JSON.parse(localStorage.getItem('products'))
+            if(products != null) {
+                document.write('<div class="row my-2 product-row">')
+                for (const product of products) {
+                    document.write('<div class="col-lg-4 mb-4">')
+                        document.write('<div class="card border border-dark">')
+                            document.write('<img src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2021/01/fastFoods1-1199461884-770x533-1.jpg" class="card-img-top" alt="cap">')
+                            document.write('<div class="card-body">')
+                                document.write(`<h3 class="card-title">${product.shop_name}</h3>`)
+                                document.write(`<h4 class="card-title">${product.name}</h4>`)
+                                document.write(`<h5 class="card-title price" data-price="${product.price}">Price: ${product.price}$</h5>`)
+                                document.write('<div class="card-body fs-5">')
+                                    document.write('<span class="me-3">Count: </span>')
+                                    document.write('<button class="btn btn-dark rounded-circle">-</button>')
+                                    document.write(`<span class="mx-2" id="product-count" data-id="${products.indexOf(product)}">${product.count}</span>`)
+                                    document.write('<button class="btn btn-dark rounded-circle">+</button>')
+                                document.write('</div>')
+                                document.write('<div class="d-flex justify-content-end">')
+                                    document.write(`<button class="btn btn-dark remove-btn" data-id="${products.indexOf(product)}">Remove</button>`)
+                                document.write('</div>')
+                            document.write('</div>')
+                        document.write('</div>')
+                    document.write('</div>')
+                }
+                document.write('</div>')
+            }
+        </script>
+    </div>
+</div>
+<script>
+    const subButton = document.querySelector("#submit-btn")
+    subButton.addEventListener('click', () => {
+        const input = document.querySelector('#input-total-sum')
+        input.value = localStorage.getItem('products')
+    })
+</script>
+<script src="../static/js/totalPrice.js"></script>
+<script src="../static/js/productCount.js"></script>
+<script src="../static/js/removeFromCart.js"></script>
+</body>
+</html>
